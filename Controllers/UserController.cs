@@ -24,5 +24,12 @@ namespace EventSystem.Controllers
         {
             return Ok(_userService.GetUserSchedule(userId));
         }
+
+        [HttpGet]
+        [Route("getall")]
+        public ActionResult<List<SessionDTO>> GetAllUser()
+        {
+            return Ok(_userService.GetAllUser());
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using EventSystem.DTO;
 using EventSystem_ClassLibrary.Models;
 using EventSystem_ClassLibrary.Repository;
+using Microsoft.AspNetCore.Http;
 
 namespace EventSystem.Services
 {
@@ -28,6 +29,24 @@ namespace EventSystem.Services
                 dto.Session_Start_Time = s.StartTime;
                 dto.Session_End_Time = s.EndTime;
                 dto.Session_Room_Name = s.RoomName;
+
+                dtoList.Add(dto);
+            }
+
+            return dtoList;
+        }
+
+        public List<UserDTO> GetAllUser()
+        {
+            List<User> users = _userRepository.GetAllUser();
+            List<UserDTO> dtoList = new List<UserDTO>();
+
+            foreach (User u in users)
+            {
+                UserDTO dto = new UserDTO();
+                dto.User_Id = u.Id;
+                dto.User_Full_Name = u.FullName;
+                dto.User_Email = u.Email;
 
                 dtoList.Add(dto);
             }

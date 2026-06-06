@@ -60,9 +60,10 @@ namespace EventSystem.Controllers
 
         [HttpGet]
         [Route("{id}/weather")]
-        public ActionResult GetWeatherForEvent(int id)
+        public async Task<IActionResult> GetWeatherForEvent(int id)
         {
-            return Ok(_eventService.GetWeatherForEvent(id));
+            var weather = await _eventService.GetWeatherForEvent(id);
+            return Ok(weather);
         }
     }
 }

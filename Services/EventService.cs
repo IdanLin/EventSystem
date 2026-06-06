@@ -132,8 +132,17 @@ namespace EventSystem.Services
             string dateForUrl = e.StartDate.ToString("yyyy-MM-dd");
 
             string locationForUrl = Uri.EscapeDataString(e.Location.ToString()); //no spaces
+            string url;
+            if (e.StartDate > DateTime.Now)
+            {
+                url = $"https://api.weatherapi.com/v1/forecast.json?key=f37d73e810d744b9834181309260606&q={locationForUrl}&dt={dateForUrl}";
 
-            string url = $"https://api.weatherapi.com/v1/history.json?key=f37d73e810d744b9834181309260606&q={locationForUrl}&dt={dateForUrl}";
+            }
+            else
+            {
+                url = $"https://api.weatherapi.com/v1/history.json?key=f37d73e810d744b9834181309260606&q={locationForUrl}&dt={dateForUrl}";
+
+            }
             var data = await client.GetFromJsonAsync<JsonElement>(url);
             _cache.Set(cacheKeyID, data, new MemoryCacheEntryOptions
             {
