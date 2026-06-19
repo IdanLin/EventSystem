@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Details</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <a href="index.html" class="back-link">Back to Dashboard</a>
+
+    <div class="event-info">
+        <h1 id="e-title">Loading...</h1>
+        <p id="e-desc"></p>
+        <p><strong>Location:</strong> <span id="e-loc"></span></p>
+        <p><strong>Dates:</strong> <span id="e-dates"></span></p>
+        <p><strong>Weather Forecast:</strong> <span id="e-weather">Loading weather...</span></p> <!--space holder that wait for the weather data-->
+    </div>
+
+    <h2>Sessions Schedule</h2>
+    <button onclick="showCreateSessionForm()">Create New Session</button>
+
+    <div id="session-form" class="form-container">
+        <h3 id="form-title">Create Session</h3>
+        <input type="hidden" id="session-id">
+        <input type="text" id="session-title" placeholder="Session Title"><br>
+        <input type="text" id="session-desc" placeholder="Description"><br>
+        <input type="text" id="session-speaker" placeholder="Speaker"><br>
+        <input type="text" id="session-room" placeholder="Room"><br>
+        <label>Start:</label><br><input type="datetime-local" id="session-start"><br>
+        <label>End:</label><br><input type="datetime-local" id="session-end"><br>
+        <button onclick="saveSession()">Save Session</button>
+        <button class="btn-danger" onclick="hideSessionForm()">Cancel</button>
+    </div>
+
+    <div id="sessions-container"></div>
+
+    <script>
+        let baseUrl = 'http://localhost:5119/api';
+
+        let urlParams = new URLSearchParams(window.location.search); //to get the id of the page
+        let eventId = urlParams.get('id');
+        let usersList = [];
+
+        async function loadUsers() {
+            try {
+                let response = await fetch(baseUrl + '/User');
+                usersList = await response.json();
+            } catch (error) {
+                alert("Error loading users");
+            }
+        }
+
+        async function loadEventWeather() {
+            try {
+                let response = await fetch(baseUrl + '/Event/' + eventId + '/weather');
+                if (response.ok) {
+                    let weatherText = await response.text();
+                    try {
+                        let weatherObj = JSON.parse(weatherText);
+                        if (weatherObj.forecast && weatherObj.forecast.forecastday && weatherObj.forecast.forecastday.length > 0) {
+                            let dayInfo = weatherObj.forecast.forecastday[0].day;
+                            let maxTemp = dayInfo.maxtemp_c;
+                            let minTemp = dayInfo.mintemp_c;
+                            let condition = dayInfo.condition.text;
+                            document.getElementById('e-weather').innerText = condition + ' | Max: ' + maxTemp + '°C, Min: ' + minTemp + '°C';
+                        } else {
+                            document.getElementById('e-weather').innerText = 'Weather not available for this date';
+                        }
+                    } catch (e) {
+                        document.getElementById('e-weather').innerText = weatherText;
+                    }
+                } else {
+                    document.getElementById('e-weather').innerText = 'Could not fetch weather';
+                }
+            } catch (error) {
+                document.getElementById('e-weather').innerText = 'Error fetching weather';
+            }
+        }
+
+        async function loadEventDetails() {
+            try {
+                await loadUsers();
+                loadEventWeather();
+
+                let response = await fetch(baseUrl + '/Event/' + eventId);
+                let eventData = await response.json();
+
+                document.getElementById('e-title').innerText = eventData.event_Title;
+                document.getElementById('e-desc').innerText = eventData.event_Description;
+                document.getElementById('e-loc').innerText = eventData.event_Location + ", " + eventData.event_City;
+                document.getElementById('e-dates').innerText = new Date(eventData.event_Start_Date).toLocaleString() + ' - ' + new Date(eventData.event_End_Date).toLocaleString();
+
+                let container = document.getElementById('sessions-container');
+                container.innerHTML = '';
+
+                if (!eventData.event_Sessions || eventData.event_Sessions.length === 0) {
+                    container.innerHTML = '<p>No sessions planned for this event.</p>';
+                    return;
+                }
+
+                let sessions = eventData.event_Sessions;
+
+                for (let i = 0; i < sessions.length; i++) {
+                    for (let j = i + 1; j < sessions.length; j++) {
+                        if (new Date(sessions[i].session_Start_Time) > new Date(sessions[j].session_Start_Time)) {
+                            let temp = sessions[i];
+                            sessions[i] = sessions[j];
+                            sessions[j] = temp;
+                        }
+                    }
+                }
+
+                for (let i = 0; i < sessions.length; i++) {
+                    let s = sessions[i];
+                    let div = document.createElement('div');
+                    div.className = 'session-card';
+
+                    let timeStr = new Date(s.session_Start_Time).toLocaleString() + ' - ' + new Date(eventData.event_End_Date).toLocaleString();
+
+                    div.innerHTML = '<h3>' + s.session_Title + '</h3>' +
+                                    '<p>' + s.session_Description + '</p>' +
+                                    '<p><strong>Speaker:</strong> ' + s.session_Speaker_Name + ' | <strong>Room:</strong> ' + s.session_Room_Name + '</p>' +
+                                    '<p><strong>Date:</strong> ' + timeStr + '</p>';
+
+                    let regDiv = document.createElement('div');
+                    regDiv.style.marginTop = "10px";
+                    regDiv.style.padding = "10px";
+
+                    regDiv.innerHTML = '<span>Select User: </span>';
+                    let select = document.createElement('select');
+                    select.id = 'user-for-' + s.session_Id;
+
+                    for (let j = 0; j < usersList.length; j++) {
+                        let u = usersList[j];
+                        let opt = document.createElement('option');
+                        opt.value = u.user_Id;
+                        opt.innerText = u.user_Full_Name;
+                        select.appendChild(opt);
+                    }
+
+                    let regBtn = document.createElement('button');
+                    regBtn.innerText = 'Register for Session';
+                    regBtn.onclick = function () { register(select.value, s.session_Id); };
+
+                    regDiv.appendChild(select);
+                    regDiv.appendChild(regBtn);
+                    div.appendChild(regDiv);
+
+                    let actionDiv = document.createElement('div');
+                    actionDiv.style.marginTop = "15px";
+
+                    let updateBtn = document.createElement('button');
+                    updateBtn.innerText = 'Update Session';
+                    updateBtn.onclick = function () { showUpdateSessionForm(s); };
+
+                    let deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'btn-danger';
+                    deleteBtn.innerText = 'Delete Session';
+                    deleteBtn.onclick = function () { deleteSession(s.session_Id); };
+
+                    actionDiv.appendChild(updateBtn);
+                    actionDiv.appendChild(deleteBtn);
+                    div.appendChild(actionDiv);
+
+                    container.appendChild(div);
+                }
+            } catch (error) {
+                alert("Error loading event details");
+            }
+        }
+
+        async function register(userId, sessionId) {
+            if (!userId) {
+                alert("Please select a user");
+                return;
+            }
+            try {
+                let response = await fetch(baseUrl + '/Session/' + sessionId + '/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(parseInt(userId))
+                });
+
+                let msg = await response.text();
+                if (!response.ok) {
+                    alert('Error: ' + msg);
+                } else {
+                    alert('Registration successful: ' + msg);
+                }
+            } catch (err) {
+                alert('Request failed');
+            }
+        }
+
+        function showCreateSessionForm() {
+            document.getElementById('session-form').style.display = 'block';
+            document.getElementById('form-title').innerText = 'Create New Session';
+            document.getElementById('session-id').value = '';
+            document.getElementById('session-title').value = '';
+            document.getElementById('session-desc').value = '';
+            document.getElementById('session-speaker').value = '';
+            document.getElementById('session-room').value = '';
+            document.getElementById('session-start').value = '';
+            document.getElementById('session-end').value = '';
+        }
+
+        function showUpdateSessionForm(s) {
+            document.getElementById('session-form').style.display = 'block';
+            document.getElementById('form-title').innerText = 'Update Session';
+            document.getElementById('session-id').value = s.session_Id;
+            document.getElementById('session-title').value = s.session_Title;
+            document.getElementById('session-desc').value = s.session_Description;
+            document.getElementById('session-speaker').value = s.session_Speaker_Name;
+            document.getElementById('session-room').value = s.session_Room_Name;
+            document.getElementById('session-start').value = s.session_Start_Time.substring(0, 16);
+            document.getElementById('session-end').value = s.session_End_Time.substring(0, 16);
+        }
+
+        function hideSessionForm() {
+            document.getElementById('session-form').style.display = 'none';
+        }
+
+        async function saveSession() {
+            let startVal = document.getElementById('session-start').value;
+            let endVal = document.getElementById('session-end').value;
+
+            if (new Date(startVal) > new Date(endVal)) {
+                alert("Error: Session end time cannot be before the start time.");
+                return;
+            }
+
+            let id = document.getElementById('session-id').value;
+            let sessionObj = {
+                event_Id: parseInt(eventId),
+                session_Title: document.getElementById('session-title').value,
+                session_Description: document.getElementById('session-desc').value,
+                session_Speaker_Name: document.getElementById('session-speaker').value,
+                session_Room_Name: document.getElementById('session-room').value,
+                session_Start_Time: startVal,
+                session_End_Time: endVal
+            };
+
+            let url = baseUrl + '/Event/' + eventId + '/session';
+            let method = 'POST';
+
+            if (id !== "") {
+                sessionObj.session_Id = parseInt(id);
+                url = baseUrl + '/Session/' + id;
+                method = 'PUT';
+            }
+
+            try {
+                let response = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(sessionObj)
+                });
+
+                if (!response.ok) {
+                    let errorText = await response.text();
+                    alert(errorText);
+                    return;
+                }
+                hideSessionForm();
+                loadEventDetails();
+            } catch (err) {
+                alert("Server error occurred.");
+            }
+        }
+
+        async function deleteSession(id) {
+            if (confirm('Are you sure you want to delete this session?')) {
+                try {
+                    await fetch(baseUrl + '/Session/' + id, { method: 'DELETE' });
+                    loadEventDetails();
+                } catch (err) {
+                    alert("Error deleting session");
+                }
+            }
+        }
+
+        loadEventDetails();
+    </script>
+</body>
+</html>

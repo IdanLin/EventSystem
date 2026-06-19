@@ -1,0 +1,87 @@
+C:\Users\idanl\source\repos\EventSystemClient\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\idanl\source\repos\EventSystemClient\bin\Debug\net8.0\appsettings.json
+C:\Users\idanl\source\repos\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.staticwebassets.runtime.json
+C:\Users\idanl\source\repos\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.staticwebassets.endpoints.json
+C:\Users\idanl\source\repos\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.exe
+C:\Users\idanl\source\repos\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.deps.json
+C:\Users\idanl\source\repos\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.runtimeconfig.json
+C:\Users\idanl\source\repos\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.dll
+C:\Users\idanl\source\repos\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.pdb
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.AssemblyInfoInputs.cache
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.AssemblyInfo.cs
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.csproj.CoreCompileInputs.cache
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\scopedcss\bundle\EventSystem_Client.styles.css
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.dll
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\refint\EventSystem_Client.dll
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.pdb
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.genruntimeconfig.cache
+C:\Users\idanl\source\repos\EventSystemClient\obj\Debug\net8.0\ref\EventSystem_Client.dll
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\bin\Debug\net8.0\appsettings.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.staticwebassets.runtime.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.staticwebassets.endpoints.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.exe
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.deps.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.runtimeconfig.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.dll
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.pdb
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.AssemblyInfoInputs.cache
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.AssemblyInfo.cs
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.csproj.CoreCompileInputs.cache
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\scopedcss\bundle\EventSystem_Client.styles.css
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.dll
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\refint\EventSystem_Client.dll
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.pdb
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.genruntimeconfig.cache
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystemClient\obj\Debug\net8.0\ref\EventSystem_Client.dll
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\bin\Debug\net8.0\appsettings.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.staticwebassets.endpoints.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.staticwebassets.runtime.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.exe
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.deps.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.runtimeconfig.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.dll
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\bin\Debug\net8.0\EventSystem_Client.pdb
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.AssemblyInfoInputs.cache
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.AssemblyInfo.cs
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.csproj.CoreCompileInputs.cache
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\scopedcss\bundle\EventSystem_Client.styles.css
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.dll
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\refint\EventSystem_Client.dll
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.pdb
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.genruntimeconfig.cache
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\ref\EventSystem_Client.dll

@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Management System</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <h1>Event Management</h1>
+
+    <button onclick="showCreateEventForm()">Create New Event</button>
+
+    <div id="event-form" class="form-container">
+        <h3 id="form-title">Create Event</h3>
+        <input type="hidden" id="event-id">
+        <input type="text" id="event-title" placeholder="Event Title"><br>
+        <input type="text" id="event-desc" placeholder="Description"><br>
+        <label>Start:</label><br><input type="datetime-local" id="event-start"><br>
+        <label>End:</label><br><input type="datetime-local" id="event-end"><br>
+        <input type="text" id="event-location" placeholder="Location"><br>
+        <input type="text" id="event-city" placeholder="City"><br>
+        <input type="text" id="event-type" placeholder="Type"><br>
+        <button onclick="saveEvent()">Save</button>
+        <button class="btn-danger" onclick="hideEventForm()">Cancel</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Location</th>
+                <th>Date (sort by start date)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="events-tbody">
+        </tbody>
+    </table>
+
+    <script>
+        let baseUrl = 'http://localhost:5119/api';
+
+        async function loadEvents() {
+            try {
+                let response = await fetch(baseUrl + '/Event/schedule');
+                let data = await response.json();
+
+                let tbody = document.getElementById('events-tbody');
+                tbody.innerHTML = '';
+
+                for (let i = 0; i < data.length; i++) {
+                    let e = data[i];
+                    let tr = document.createElement('tr');
+
+                    let titleTd = document.createElement('td');
+                    let link = document.createElement('a');
+                    link.href = 'event.html?id=' + e.event_Id;
+                    link.innerText = e.event_Title;
+                    titleTd.appendChild(link);
+
+                    let locTd = document.createElement('td');
+                    locTd.innerText = e.event_Location +', ' + e.event_City;
+
+                    let dateTd = document.createElement('td');
+                    dateTd.innerText = new Date(e.event_Start_Date).toLocaleString() + ' - ' + new Date(e.event_End_Date).toLocaleString();
+
+                    let actionsTd = document.createElement('td');
+
+                    let updateBtn = document.createElement('button');
+                    updateBtn.innerText = 'Update';
+                    updateBtn.onclick = function () { showUpdateEventForm(e); };
+
+                    let deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'btn-danger';
+                    deleteBtn.innerText = 'Delete';
+                    deleteBtn.onclick = function () { deleteEvent(e.event_Id); };
+
+                    actionsTd.appendChild(updateBtn);
+                    actionsTd.appendChild(deleteBtn);
+
+                    tr.appendChild(titleTd);
+                    tr.appendChild(locTd);
+                    tr.appendChild(dateTd);
+                    tr.appendChild(actionsTd);
+
+                    tbody.appendChild(tr);
+                }
+            } catch (error) {
+                alert("Error loading events");
+            }
+        }
+
+        function showCreateEventForm() {
+            document.getElementById('event-form').style.display = 'block';
+            document.getElementById('form-title').innerText = 'Create New Event';
+            document.getElementById('event-id').value = '';
+            document.getElementById('event-title').value = '';
+            document.getElementById('event-desc').value = '';
+            document.getElementById('event-start').value = '';
+            document.getElementById('event-end').value = '';
+            document.getElementById('event-location').value = '';
+            document.getElementById('event-city').value = '';
+            document.getElementById('event-type').value = '';
+        }
+
+        function showUpdateEventForm(e) {
+            document.getElementById('event-form').style.display = 'block';
+            document.getElementById('form-title').innerText = 'Update Event';
+            document.getElementById('event-id').value = e.event_Id;
+            document.getElementById('event-title').value = e.event_Title;
+            document.getElementById('event-desc').value = e.event_Description;
+            document.getElementById('event-start').value = e.event_Start_Date.substring(0, 16);
+            document.getElementById('event-end').value = e.event_End_Date.substring(0, 16);
+            document.getElementById('event-location').value = e.event_Location;
+            document.getElementById('event-city').value = e.event_City;
+            document.getElementById('event-type').value = e.event_Type;
+        }
+
+        function hideEventForm() {
+            document.getElementById('event-form').style.display = 'none';
+        }
+
+        async function saveEvent() {
+            let id = document.getElementById('event-id').value;
+            let eventObj = {
+                event_Title: document.getElementById('event-title').value,
+                event_Description: document.getElementById('event-desc').value,
+                event_Start_Date: document.getElementById('event-start').value,
+                event_End_Date: document.getElementById('event-end').value,
+                event_Location: document.getElementById('event-location').value,
+                event_Location: document.getElementById('event-city').value,
+                event_Type: document.getElementById('event-type').value
+            };
+
+            let url = baseUrl + '/Event';
+            let method = 'POST';
+
+            if (id !== "") {
+                eventObj.event_Id = parseInt(id);
+                url = baseUrl + '/Event/' + id;
+                method = 'PUT';
+            }
+
+            try {
+                await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(eventObj)
+                });
+                hideEventForm();
+                loadEvents();
+            } catch (err) {
+                alert("Error saving event");
+            }
+        }
+
+        async function deleteEvent(id) {
+            if (confirm('Are you sure you want to delete this event?')) {
+                try {
+                    await fetch(baseUrl + '/Event/' + id, { method: 'DELETE' });
+                    loadEvents();
+                } catch (err) {
+                    alert("Error deleting event");
+                }
+            }
+        }
+
+        loadEvents();
+    </script>
+</body>
+</html>

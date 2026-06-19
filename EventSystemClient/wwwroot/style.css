@@ -1,0 +1,91 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    color: darkblue;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: lightblue;
+    font-size: 16px;
+}
+
+button {
+    font-size: 14px;
+    padding: 6px 12px;
+    cursor: pointer;
+    background: darkblue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin: 2px;
+}
+
+button:hover {
+    background: blue;
+}
+
+.btn-danger {
+    background: darkred;
+}
+
+.btn-danger:hover {
+    background: red;
+}
+
+.form-container {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background: white;
+    display: none;
+    width: 30%;
+}
+
+a {
+    color: darkblue;
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+.event-info {
+    padding: 15px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.session-card {
+    border: 1px solid gray;
+    border-left: 5px solid darkblue;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.session-card h3 {
+    color: darkblue;
+}
+
+input, select {
+    margin: 5px 0;
+    padding: 8px;
+    width: 90%;
+    box-sizing: border-box;
+}

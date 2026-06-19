@@ -1,0 +1,14 @@
+C:\Users\idanl\source\repos\EventSystem_ClassLibrary\bin\Debug\net8.0\EventSystem_DATA.deps.json
+C:\Users\idanl\source\repos\EventSystem_ClassLibrary\bin\Debug\net8.0\EventSystem_DATA.runtimeconfig.json
+C:\Users\idanl\source\repos\EventSystem_ClassLibrary\bin\Debug\net8.0\EventSystem_DATA.dll
+C:\Users\idanl\source\repos\EventSystem_ClassLibrary\bin\Debug\net8.0\EventSystem_DATA.pdb
+C:\Users\idanl\source\repos\EventSystem_ClassLibrary\obj\Debug\net8.0\EventSystem_DATA.csproj.AssemblyReference.cache
+C:\Users\idanl\source\repos\EventSystem_ClassLibrary\obj\Debug\net8.0\EventSystem_DATA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\idanl\source\repos\EventSystem_ClassLibrary\obj\Debug\net8.0\EventSystem_DATA.AssemblyInfoInputs.cache
+C:\Users\idanl\source\repos\EventSystem_ClassLibrary\obj\Debug\net8.0\EventSystem_DATA.AssemblyInfo.cs
+C:\Users\idanl\source\repos\EventSystem_ClassLibrary\obj\Debug\net8.0\EventSystem_DATA.csproj.CoreCompileInputs.cache
+C:\Users\idanl\source\repos\EventSystem_ClassLibrary\obj\Debug\net8.0\EventSystem_DATA.dll
+C:\Users\idanl\source\repos\EventSystem_ClassLibrary\obj\Debug\net8.0\refint\EventSystem_DATA.dll
+C:\Users\idanl\source\repos\EventSystem_ClassLibrary\obj\Debug\net8.0\EventSystem_DATA.pdb
+C:\Users\idanl\source\repos\EventSystem_ClassLibrary\obj\Debug\net8.0\EventSystem_DATA.genruntimeconfig.cache
+C:\Users\idanl\source\repos\EventSystem_ClassLibrary\obj\Debug\net8.0\ref\EventSystem_DATA.dll
