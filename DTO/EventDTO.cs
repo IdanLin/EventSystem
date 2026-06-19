@@ -14,6 +14,8 @@
 
         public string Event_Location { get; set; }
 
+        public string Event_City { get; set; }
+
         public string Event_Type { get; set; }
 
         public List<SessionDTO> Event_Sessions { get; set; } = new List<SessionDTO>();

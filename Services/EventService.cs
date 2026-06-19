@@ -34,6 +34,7 @@ namespace EventSystem.Services
                 dto.Event_Start_Date = e.StartDate;
                 dto.Event_End_Date = e.EndDate;
                 dto.Event_Location = e.Location;
+                dto.Event_City = e.City;
                 dto.Event_Type = e.EventType;
 
                 dtoList.Add(dto);
@@ -57,6 +58,7 @@ namespace EventSystem.Services
             dto.Event_Start_Date = e.StartDate;
             dto.Event_End_Date = e.EndDate;
             dto.Event_Location = e.Location;
+            dto.Event_City = e.City;
             dto.Event_Type = e.EventType;
             dto.Event_Sessions = new List<SessionDTO>();
 
@@ -81,36 +83,55 @@ namespace EventSystem.Services
             return dto;
         }
 
-        public void CreateEvent(EventDTO newEventDto)
+        public string CreateEvent(EventDTO newEventDto)
         {
+            if (newEventDto == null)
+                return "Event data is missing";
+            if (newEventDto.Event_End_Date < newEventDto.Event_Start_Date)
+                return "Event_End_Date < Event_Start_Date";
+
             Event e = new Event();
             e.Title = newEventDto.Event_Title;
             e.Description = newEventDto.Event_Description;
             e.StartDate = newEventDto.Event_Start_Date;
             e.EndDate = newEventDto.Event_End_Date;
             e.Location = newEventDto.Event_Location;
+            e.City = newEventDto.Event_City;
             e.EventType = newEventDto.Event_Type;
 
             _eventRepository.InsertEvent(e);
+            newEventDto.Event_Id = e.Id;
+            return "Success";
         }
 
-        public void UpdateEvent(int id, EventDTO updatedEventDto)
+        public string UpdateEvent(int id, EventDTO updatedEventDto)
         {
-            Event e = new Event();
-            e.Id = id;
+            if (updatedEventDto == null)
+                return "Event data is missing";
+            if (updatedEventDto.Event_End_Date < updatedEventDto.Event_Start_Date)
+                return "Event_End_Date < Event_Start_Date";
+
+            Event e = _eventRepository.GetEventById(id);
+            if (e == null)
+            {
+                return $"Event {id} not found";
+            }
+
             e.Title = updatedEventDto.Event_Title;
             e.Description = updatedEventDto.Event_Description;
             e.StartDate = updatedEventDto.Event_Start_Date;
             e.EndDate = updatedEventDto.Event_End_Date;
             e.Location = updatedEventDto.Event_Location;
+            e.City = updatedEventDto.Event_City;
             e.EventType = updatedEventDto.Event_Type;
 
             _eventRepository.UpdateEvent(e);
+            return "Success";
         }
 
-        public void DeleteEvent(int id)
+        public string DeleteEvent(int id)
         {
-            _eventRepository.DeleteEvent(id);
+            return _eventRepository.DeleteEvent(id) ? "Success" : $"Event {id} not found";
         }
 
         public async Task<JsonElement> GetWeatherForEvent(int eventId)
@@ -125,23 +146,21 @@ namespace EventSystem.Services
             Event e = _eventRepository.GetEventById(eventId);
             if (e == null)
             {
-                return default; //because null not option
+                return default; //no null return option in JSON
             }
             var client = _httpClientFactory.CreateClient();
 
             string dateForUrl = e.StartDate.ToString("yyyy-MM-dd");
 
-            string locationForUrl = Uri.EscapeDataString(e.Location.ToString()); //no spaces
+            string locationForUrl = Uri.EscapeDataString(e.City.ToString()); //no spaces
             string url;
             if (e.StartDate > DateTime.Now)
             {
                 url = $"https://api.weatherapi.com/v1/forecast.json?key=f37d73e810d744b9834181309260606&q={locationForUrl}&dt={dateForUrl}";
-
             }
             else
             {
                 url = $"https://api.weatherapi.com/v1/history.json?key=f37d73e810d744b9834181309260606&q={locationForUrl}&dt={dateForUrl}";
-
             }
             var data = await client.GetFromJsonAsync<JsonElement>(url);
             _cache.Set(cacheKeyID, data, new MemoryCacheEntryOptions

@@ -8,33 +8,37 @@ namespace EventSystem.Services
     {
         private readonly SessionRepository _sessionRepository;
         private readonly EventRepository _eventRepository;
+        private readonly SessionRegistrationRepository _sessionRegistrationRepository;
+        private readonly UserRepository _userRepository;
 
-        public SessionService(SessionRepository sessionRepository, EventRepository eventRepository)
+        public SessionService(SessionRepository sessionRepository, EventRepository eventRepository, SessionRegistrationRepository sessionRegistrationRepository, UserRepository userRepository)
         {
             _sessionRepository = sessionRepository;
             _eventRepository = eventRepository;
+            _sessionRegistrationRepository = sessionRegistrationRepository;
+            _userRepository = userRepository;
         }
 
-        public bool CreateSession(SessionDTO sessionDto)
+        public string CreateSession(int id, SessionDTO sessionDto)
         {
-            Event ev = _eventRepository.GetEventById(sessionDto.Event_Id);
+            Event ev = _eventRepository.GetEventById(id);
             if (ev == null)
             {
-                return false;
+                return $"Event {id} not found";
             }
 
             if (sessionDto.Session_Start_Time >= sessionDto.Session_End_Time)
             {
-                return false;
+                return "Session_Start_Time >= Session_End_Time";
             }
 
             if (sessionDto.Session_Start_Time < ev.StartDate || sessionDto.Session_End_Time > ev.EndDate)
             {
-                return false;
+                return "Session_Start_Time < ev.StartDate || Session_End_Time > ev.EndDate";
             }
 
             Session newSession = new Session();
-            newSession.EventId = sessionDto.Event_Id;
+            newSession.EventId = ev.Id;
             newSession.Title = sessionDto.Session_Title;
             newSession.Description = sessionDto.Session_Description;
             newSession.SpeakerName = sessionDto.Session_Speaker_Name;
@@ -43,34 +47,23 @@ namespace EventSystem.Services
             newSession.RoomName = sessionDto.Session_Room_Name;
 
             _sessionRepository.InsertSession(newSession);
-            return true;
+            sessionDto.Session_Id = newSession.Id;
+            return "Success";
         }
 
         public string RegisterUser(int userId, int sessionId)
         {
-            Session session = _sessionRepository.GetSessionById(sessionId);
-            if (session == null)
-            {
-                return "Session not found";
-            }
+            if (_sessionRepository.GetSessionById(sessionId) == null)
+                return $"Session {sessionId} not found";
 
-            List<Session> userSessions = _sessionRepository.GetUserRegisteredSessions(userId);
+            if (!_userRepository.IsUserInSystem(userId))
+                return $"User {userId} not found";
 
-            foreach (Session s in userSessions)
-            {
-                if (s.Id == sessionId)
-                {
-                    return "User is already registered for this session";
-                }
-            }
+            if (_sessionRegistrationRepository.IsUserRegisteredToSession(userId, sessionId))
+                return "User is already registered for this session or not found";
 
-            foreach (Session existingSession in userSessions)
-            {
-                if (session.StartTime < existingSession.EndTime && session.EndTime > existingSession.StartTime)
-                {
-                    return "Schedule overlap";
-                }
-            }
+            if (_sessionRegistrationRepository.IsUserRegisteredSessionsOverlap(userId, sessionId))
+                return "Schedule overlap";
 
             SessionRegistration reg = new SessionRegistration();
             reg.SessionId = sessionId;
@@ -88,8 +81,7 @@ namespace EventSystem.Services
 
             foreach (User u in users)
             {
-                UserDTO dto = new UserDTO();
-                dto.User_Id = u.Id;
+                UserDTO dto = new UserDTO(); //ask only for name and email
                 dto.User_Full_Name = u.FullName;
                 dto.User_Email = u.Email;
 
@@ -97,6 +89,91 @@ namespace EventSystem.Services
             }
 
             return dtoList;
+        }
+
+        public string UpdateSession(int id, SessionDTO sessionDto)
+        {
+            if (sessionDto == null)
+                return "Session data is missing";
+
+            Session existingSession = _sessionRepository.GetSessionById(id);
+            if (existingSession == null)
+                return $"Session {id} not found";
+
+            Event ev = _eventRepository.GetEventById(existingSession.EventId);
+            if (ev == null)
+                return "Error: The specified event was not found.";
+
+            if (sessionDto.Session_Start_Time >= sessionDto.Session_End_Time)
+                return "Error: Session end time must be after the start time.";
+
+            if (sessionDto.Session_Start_Time < ev.StartDate || sessionDto.Session_End_Time > ev.EndDate)
+                return "Error: Session times must be strictly within the main event's timeframe.";
+
+            Session s = new Session();
+            existingSession.Title = sessionDto.Session_Title;
+            existingSession.Description = sessionDto.Session_Description;
+            existingSession.SpeakerName = sessionDto.Session_Speaker_Name;
+            existingSession.StartTime = sessionDto.Session_Start_Time;
+            existingSession.EndTime = sessionDto.Session_End_Time;
+            existingSession.RoomName = sessionDto.Session_Room_Name;
+
+            RemoveConflictingRegistrations(id, sessionDto.Session_Start_Time, sessionDto.Session_End_Time);
+            _sessionRepository.UpdateSession(existingSession);
+
+            return "Success";
+        }
+
+        private void RemoveConflictingRegistrations(int currentSessionId, DateTime newStartTime, DateTime newEndTime)
+        {
+            List<SessionRegistration> currentRegistrations = _sessionRegistrationRepository.GetRegistrationsBySessionId(currentSessionId);
+
+            List<SessionRegistration> registrationsToRemove = new List<SessionRegistration>();
+
+            for (int i = 0; i < currentRegistrations.Count; i++)
+            {
+                int userId = currentRegistrations[i].UserId;
+
+                List<SessionRegistration> userOtherRegistrations = _sessionRegistrationRepository.GetRegistrationsByUserId(userId);
+
+                bool hasConflict = false;
+
+                for (int j = 0; j < userOtherRegistrations.Count; j++)
+                {
+                    int otherSessionId = userOtherRegistrations[j].SessionId;
+
+                    if (otherSessionId == currentSessionId)
+                    {
+                        continue;
+                    }
+
+                    Session otherSession = _sessionRepository.GetSessionById(otherSessionId);
+
+                    if (otherSession != null)
+                    {
+                        if (newStartTime < otherSession.EndTime && newEndTime > otherSession.StartTime)
+                        {
+                            hasConflict = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (hasConflict)
+                {
+                    registrationsToRemove.Add(currentRegistrations[i]);
+                }
+            }
+
+            for (int i = 0; i < registrationsToRemove.Count; i++)
+            {
+                _sessionRegistrationRepository.DeleteRegistration(registrationsToRemove[i]);
+            }
+        }
+
+        public string DeleteSession(int id)
+        {
+            return _sessionRepository.DeleteSession(id) ? "Success" : "Session not found";
         }
     }
 }

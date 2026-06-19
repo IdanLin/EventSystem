@@ -1,9 +1,11 @@
 ﻿using EventSystem.DTO;
 using EventSystem.Services;
 using EventSystem_ClassLibrary.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Text.Json;
 
 namespace EventSystem.Controllers
 {
@@ -12,57 +14,70 @@ namespace EventSystem.Controllers
     public class EventController : ControllerBase
     {
         private readonly EventService _eventService;
+        private readonly SessionService _sessionService;
 
-        public EventController(EventService eventService)
+        public EventController(EventService eventService, SessionService sessionService)
         {
             _eventService = eventService;
+            _sessionService = sessionService;
         }
 
-        [HttpGet]
-        [Route("getall")]
+        [HttpPost] // POST: /api/event/
+        public ActionResult<EventDTO> CreateEvent([FromBody] EventDTO e)
+        {
+            string result = _eventService.CreateEvent(e);
+            return result == "Success" ? Ok(e) : BadRequest(result);
+        }
+
+        [HttpGet] // GET: /api/event/{eventId}
+        [Route("{eventId}")]
+        public ActionResult<EventDTO> GetEventById(int eventId)
+        {
+            EventDTO e = _eventService.GetEventById(eventId);
+            return e != null ? Ok(e) : NotFound($"Event with ID {eventId} not found.");
+        }
+
+        [HttpPut] // PUT: /api/event/{eventId}
+        [Route("{eventId}")]
+        public ActionResult UpdateEvent(int eventId, [FromBody] EventDTO e) //for feature number 2 (events) - my logic: delete session that start before the new start time or end after the new end time
+        {
+            string result = _eventService.UpdateEvent(eventId, e);
+            return result == "Success" ? Ok($"Event with ID {eventId} updated successfully") : BadRequest(result);
+        }
+
+        [HttpDelete] // DELETE: /api/event/{eventId}
+        [Route("{eventId}")]
+        public ActionResult DeleteEvent(int eventId)
+        {
+            string result = _eventService.DeleteEvent(eventId);
+            return result == "Success" ? Ok($"Event with ID {eventId} deleted successfully") : NotFound(result);
+        }
+
+        [HttpGet] // GET: /api/event/schedule
+        [Route("schedule")]
         public ActionResult<List<EventDTO>> GetAllEvents()
         {
-            return Ok(_eventService.GetAllEvents());
+            List<EventDTO> events = _eventService.GetAllEvents();
+            if (events == null || !events.Any()) return NotFound("No events found.");
+            return Ok(events);
         }
 
-        [HttpGet]
-        [Route("getbyid/{id}")]
-        public ActionResult<EventDTO> GetEventById(int id)
+        [HttpPost] // POST: /api/event/{eventId}/session
+        [Route("{eventId}/session")]
+        public ActionResult<SessionDTO> CreateSessionInEvent(int eventId, [FromBody] SessionDTO s)
         {
-            var e = _eventService.GetEventById(id);
-            if (e == null) return NotFound();
-            return Ok(e);
+            string result = _sessionService.CreateSession(eventId, s);
+            return result == "Success" ? Ok(s) : BadRequest(result);
         }
 
-        [HttpPost]
-        [Route("insert")]
-        public ActionResult CreateEvent(EventDTO e)
+        [HttpGet] // GET: /api/event/{eventId}/weather
+        [Route("{eventId}/weather")]
+        public async Task<IActionResult> GetWeatherForEvent(int eventId)
         {
-            _eventService.CreateEvent(e);
-            return Ok("Event created successfully");
-        }
+            var weather = await _eventService.GetWeatherForEvent(eventId);
+            if (weather.ValueKind == JsonValueKind.Undefined) // cheack if returned default
+                return NotFound($"Event {eventId} not found or Weather data is unavailable.");
 
-        [HttpPost]
-        [Route("update/{id}")]
-        public ActionResult UpdateEvent(int id, EventDTO e)
-        {
-            _eventService.UpdateEvent(id, e);
-            return Ok("Event updated successfully");
-        }
-
-        [HttpDelete]
-        [Route("delete/{id}")]
-        public ActionResult DeleteEvent(int id)
-        {
-            _eventService.DeleteEvent(id);
-            return Ok("Event deleted");
-        }
-
-        [HttpGet]
-        [Route("{id}/weather")]
-        public async Task<IActionResult> GetWeatherForEvent(int id)
-        {
-            var weather = await _eventService.GetWeatherForEvent(id);
             return Ok(weather);
         }
     }

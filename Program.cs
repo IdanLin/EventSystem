@@ -1,5 +1,6 @@
 
 using EventSystem.Services;
+using EventSystem_ClassLibrary.Models;
 using EventSystem_ClassLibrary.Repository;
 
 namespace EventSystem
@@ -13,6 +14,7 @@ namespace EventSystem
             builder.Services.AddScoped<EventRepository>();
             builder.Services.AddScoped<SessionRepository>();
             builder.Services.AddScoped<UserRepository>();
+            builder.Services.AddScoped<SessionRegistrationRepository>();
 
             builder.Services.AddScoped<EventService>();
             builder.Services.AddScoped<SessionService>();

@@ -3,8 +3,6 @@ using EventSystem.Services;
 using EventSystem_ClassLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace EventSystem.Controllers
 {
     [Route("api/[controller]")]
@@ -18,18 +16,22 @@ namespace EventSystem.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
-        [Route("schedule/{userId}")]
+        [HttpGet] // GET: /api/user/{userId}/schedule
+        [Route("{userId}/schedule")]
         public ActionResult<List<SessionDTO>> GetUserSchedule(int userId)
         {
-            return Ok(_userService.GetUserSchedule(userId));
+            List<SessionDTO> schedule = _userService.GetUserSchedule(userId);
+            if (schedule == null || !schedule.Any()) return NotFound("User not found or schedule is empty.");
+            return Ok(schedule);
         }
 
-        [HttpGet]
-        [Route("getall")]
-        public ActionResult<List<SessionDTO>> GetAllUser()
+        // add for the register button
+        [HttpGet] // GET: /api/user
+        public ActionResult<List<UserDTO>> GetAllUser()
         {
-            return Ok(_userService.GetAllUser());
+            var users = _userService.GetAllUser();
+            if (users == null || !users.Any()) return NotFound("No users found."); //Any == not empty
+            return Ok(users);
         }
     }
 }
