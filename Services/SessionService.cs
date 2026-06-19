@@ -70,13 +70,13 @@ namespace EventSystem.Services
             reg.UserId = userId;
             reg.RegistrationDate = DateTime.Now;
 
-            _sessionRepository.AddRegistration(reg);
+            _sessionRegistrationRepository.AddRegistration(reg);
             return "Success";
         }
 
         public List<UserDTO> GetUsersBySessionId(int sessionId)
         {
-            List<User> users = _sessionRepository.GetUsersBySessionId(sessionId);
+            List<User> users = _sessionRegistrationRepository.GetUsersBySessionId(sessionId);
             List<UserDTO> dtoList = new List<UserDTO>();
 
             foreach (User u in users)
