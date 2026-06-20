@@ -85,3 +85,4 @@ C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צ�
 C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.pdb
 C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.genruntimeconfig.cache
 C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\ref\EventSystem_Client.dll
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystemClient\obj\Debug\net8.0\EventSystem_Client.sourcelink.json

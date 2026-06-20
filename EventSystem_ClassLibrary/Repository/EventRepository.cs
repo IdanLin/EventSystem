@@ -34,28 +34,17 @@ namespace EventSystem_ClassLibrary.Repository
             db.SaveChanges();
         }
 
-        public void UpdateEvent(Event updatedEvent)
+        public void UpdateEvent(Event e)
         {
-            Event e = db.Events.SingleOrDefault(x => x.Id == updatedEvent.Id);
-            if (e != null)
+            List<Session> sessions = db.Sessions.Where(x => x.EventId == e.Id).ToList();
+            for (int i = 0; i < sessions.Count; i++)
             {
-                e.Title = updatedEvent.Title;
-                e.Description = updatedEvent.Description;
-                e.StartDate = updatedEvent.StartDate;
-                e.EndDate = updatedEvent.EndDate;
-                e.Location = updatedEvent.Location;
-                e.EventType = updatedEvent.EventType;
-
-                List<Session> sessions = db.Sessions.Where(x => x.EventId == e.Id).ToList();
-                for (int i = 0; i < sessions.Count; i++)
+                if (sessions[i].StartTime < e.StartDate || sessions[i].EndTime > e.EndDate)
                 {
-                    if (sessions[i].StartTime < e.StartDate || sessions[i].EndTime > e.EndDate)
-                    {
-                        db.Sessions.Remove(sessions[i]);
-                    }
+                    db.Sessions.Remove(sessions[i]);
                 }
-                db.SaveChanges();
             }
+            db.SaveChanges();
         }
 
         public bool DeleteEvent(int id)

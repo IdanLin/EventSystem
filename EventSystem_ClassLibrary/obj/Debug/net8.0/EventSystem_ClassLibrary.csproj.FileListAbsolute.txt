@@ -40,3 +40,4 @@ C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צ�
 C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystem_ClassLibrary\obj\Debug\net8.0\EventSystem_ClassLibrary.pdb
 C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystem_ClassLibrary\obj\Debug\net8.0\EventSystem_ClassLibrary.genruntimeconfig.cache
 C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystem_ClassLibrary\obj\Debug\net8.0\ref\EventSystem_ClassLibrary.dll
+C:\Users\idanl\OneDrive\Desktop\רופין\שנה ג\שנה ג סמסטר ב\צד שרת\IdanLin_318265378_EventSystem\EventSystem\EventSystem_ClassLibrary\obj\Debug\net8.0\EventSystem_ClassLibrary.sourcelink.json

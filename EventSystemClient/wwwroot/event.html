@@ -57,7 +57,7 @@
                 if (response.ok) {
                     let weatherText = await response.text();
                     try {
-                        let weatherObj = JSON.parse(weatherText);
+                        let weatherObj = JSON.parse(weatherText); console.log(weatherObj);
                         if (weatherObj.forecast && weatherObj.forecast.forecastday && weatherObj.forecast.forecastday.length > 0) {
                             let dayInfo = weatherObj.forecast.forecastday[0].day;
                             let maxTemp = dayInfo.maxtemp_c;
@@ -65,7 +65,7 @@
                             let condition = dayInfo.condition.text;
                             document.getElementById('e-weather').innerText = condition + ' | Max: ' + maxTemp + '°C, Min: ' + minTemp + '°C';
                         } else {
-                            document.getElementById('e-weather').innerText = 'Weather not available for this date';
+                            document.getElementById('e-weather').innerText = 'Weather not available for this date (can only show wheater for next 2 weeks)';
                         }
                     } catch (e) {
                         document.getElementById('e-weather').innerText = weatherText;
