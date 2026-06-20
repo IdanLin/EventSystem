@@ -1,0 +1,920 @@
+{
+  "info": {
+    "_postman_id": "700d4e17-e6e0-492e-8bd4-c2db8ccd19b8",
+    "name": "EventSystem",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55535111",
+    "_collection_link": "https://go.postman.co/collection/55535111-700d4e17-e6e0-492e-8bd4-c2db8ccd19b8?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "event",
+      "item": [
+        {
+          "name": "errors",
+          "item": [
+            {
+              "name": "/event/{eventId} - error not found",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5119/api/event/999",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event",
+                    "999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/event/{eventId} - error not found",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"event_Id\": 999,\r\n  \"event_Title\": \"New Title\",\r\n  \"event_Description\": \"Description-test\",\r\n  \"event_Start_Date\": \"2026-01-18T13:53:15.929Z\",\r\n  \"event_End_Date\": \"2026-07-18T13:53:15.929Z\",\r\n  \"event_Location\": \"Tel Aviv\",\r\n  \"event_City\": \"Tel Aviv\",\r\n  \"event_Type\": \"Type-test\",\r\n  \"event_Sessions\": []\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/event/999",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event",
+                    "999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/event/{eventId} - error time",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"event_Id\": 4,\r\n  \"event_Title\": \"New Title\",\r\n  \"event_Description\": \"Description-test\",\r\n  \"event_Start_Date\": \"2026-09-18T13:53:15.929Z\",\r\n  \"event_End_Date\": \"2026-07-18T13:53:15.929Z\",\r\n  \"event_Location\": \"Tel Aviv\",\r\n  \"event_City\": \"Tel Aviv\",\r\n  \"event_Type\": \"Type-test\",\r\n  \"event_Sessions\": []\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/event/4",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event",
+                    "4"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/event- error missing data",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"event_Id\": 0,\r\n  \"event_Title\": \"Title-test\",\r\n  \"event_Description\": \"Description-test\",\r\n  \"event_Start_Date\": \"2026-06-18T13:53:15.929Z\",\r\n  \"event_End_Date\": \"2026-07-18T13:53:15.929Z\",\r\n  \"event_Type\": \"Type-test\",\r\n  \"event_Sessions\": []\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/event",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/event - error time",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"event_Id\": 0,\r\n  \"event_Title\": \"Title-test\",\r\n  \"event_Description\": \"Description-test\",\r\n  \"event_Start_Date\": \"2026-07-18T13:53:15.929Z\",\r\n  \"event_End_Date\": \"2026-05-18T13:53:15.929Z\",\r\n  \"event_Location\": \"Tel Aviv\",\r\n  \"event_City\": \"Tel Aviv\",\r\n  \"event_Type\": \"Type-test\",\r\n  \"event_Sessions\": []\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/event",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/event/{eventId} - error not found",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/event/999",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event",
+                    "999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/event/{eventId}/session - error not found",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"session_Id\": 0,\r\n  \"event_Id\": 999,\r\n  \"session_Title\": \"session_Title\",\r\n  \"session_Description\": \"session_Description\",\r\n  \"session_Speaker_Name\": \"session_Speaker_Name\",\r\n  \"session_Start_Time\": \"2026-05-19T11:06:53.323Z\",\r\n  \"session_End_Time\": \"2026-06-19T11:06:53.323Z\",\r\n  \"session_Room_Name\": \"session_Room_Name\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/event/999/session",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event",
+                    "999",
+                    "session"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/event/{eventId}/session - error time end<start",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"session_Id\": 0,\r\n  \"event_Id\": 1,\r\n  \"session_Title\": \"session_Title\",\r\n  \"session_Description\": \"session_Description\",\r\n  \"session_Speaker_Name\": \"session_Speaker_Name\",\r\n  \"session_Start_Time\": \"2026-07-19T11:06:53.323Z\",\r\n  \"session_End_Time\": \"2026-06-19T11:06:53.323Z\",\r\n  \"session_Room_Name\": \"session_Room_Name\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/event/1/session",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event",
+                    "1",
+                    "session"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/event/{eventId}/session - error time event start>session start",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"session_Id\": 0,\r\n  \"event_Id\": 1,\r\n  \"session_Title\": \"session_Title\",\r\n  \"session_Description\": \"session_Description\",\r\n  \"session_Speaker_Name\": \"session_Speaker_Name\",\r\n  \"session_Start_Time\": \"1900-05-19T11:06:53.323Z\",\r\n  \"session_End_Time\": \"2026-06-19T11:06:53.323Z\",\r\n  \"session_Room_Name\": \"session_Room_Name\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/event/1/session",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event",
+                    "1",
+                    "session"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "seccess",
+          "item": [
+            {
+              "name": "/event/schedule",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5119/api/event/schedule",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event",
+                    "schedule"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/event/{eventId}",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5119/api/event/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/event",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"event_Id\": 0,\r\n  \"event_Title\": \"Title-test\",\r\n  \"event_Description\": \"Description-test\",\r\n  \"event_Start_Date\": \"2024-06-18T13:53:15.929Z\",\r\n  \"event_End_Date\": \"2024-07-18T13:53:15.929Z\",\r\n  \"event_Location\": \"Center\",\r\n  \"event_City\": \"Tel Aviv\",\r\n  \"event_Type\": \"Type-test\",\r\n  \"event_Sessions\": []\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/event/",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/event/{eventId}",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"event_Id\": 2,\r\n  \"event_Title\": \"Summer Music Festival 2026\",\r\n  \"event_Description\": \"An outdoor multi-stage music festival featuring international electronic and rock artists.\",\r\n  \"event_Start_Date\": \"2026-07-20T16:00:00\",\r\n  \"event_End_Date\": \"2026-07-22T23:00:00\",\r\n  \"event_Location\": \"Yarkon Park\",\r\n  \"event_City\": \"Haifa\",\r\n  \"event_Type\": \"Festival\",\r\n  \"event_Sessions\": []\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/event/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/event/{eventId}",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/event/4",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event",
+                    "4"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/event/{eventId}/session",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"session_Id\": 0,\r\n    \"event_Id\": 2,\r\n    \"session_Title\": \"Opening Rock Live Act part 2\",\r\n    \"session_Description\": \"An energetic live performance to kick off the summer festival lineup.\",\r\n    \"session_Speaker_Name\": \"The Code Rockers\",\r\n    \"session_Start_Time\": \"2026-07-20T18:00:00\",\r\n    \"session_End_Time\": \"2026-07-20T19:30:00\",\r\n    \"session_Room_Name\": \"Main Stage\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/event/2/session",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event",
+                    "2",
+                    "session"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/event/{eventId}/weather",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5119/api/event/1/weather",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "event",
+                    "1",
+                    "weather"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "session",
+      "item": [
+        {
+          "name": "error",
+          "item": [
+            {
+              "name": "/session/{sessionId}/register - error user already registered",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "1",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/session/1/register",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "session",
+                    "1",
+                    "register"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/session/{sessionId}/register - error schedule overlap",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "1",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/session/9/register",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "session",
+                    "9",
+                    "register"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/session/{sessionId}/register - error user not found",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "999",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/session/2/register",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "session",
+                    "2",
+                    "register"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/session/{sessionId}/register - error session not found",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "1",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/session/999/register",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "session",
+                    "999",
+                    "register"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/session/{sessionId}/user - error no users",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/session/6/user",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "session",
+                    "6",
+                    "user"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/session/{sessionId} - error time outside the event time",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"session_Id\": 2,\r\n  \"event_Id\": 1,\r\n  \"session_Title\": \"session_Title\",\r\n  \"session_Description\": \"session_Description\",\r\n  \"session_Speaker_Name\": \"session_Speaker_Name\",\r\n  \"session_Start_Time\": \"1900-05-19T11:06:53.323Z\",\r\n  \"session_End_Time\": \"2026-06-19T11:06:53.323Z\",\r\n  \"session_Room_Name\": \"session_Room_Name\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/session/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "session",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/session/{sessionId} - error time start > end",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"session_Id\": 2,\r\n  \"event_Id\": 1,\r\n  \"session_Title\": \"session_Title\",\r\n  \"session_Description\": \"session_Description\",\r\n  \"session_Speaker_Name\": \"session_Speaker_Name\",\r\n  \"session_Start_Time\": \"2026-07-19T11:06:53.323Z\",\r\n  \"session_End_Time\": \"2026-06-19T11:06:53.323Z\",\r\n  \"session_Room_Name\": \"session_Room_Name\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/session/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "session",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/session/{sessionId} - error not found",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/session/999",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "session",
+                    "999"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "success",
+          "item": [
+            {
+              "name": "/session/{sessionId}/register",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "1",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/session/4/register",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "session",
+                    "4",
+                    "register"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/session/{sessionId}",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"session_Id\": 2,\r\n  \"event_Id\": 1,\r\n  \"session_Title\": \"session_Title\",\r\n  \"session_Description\": \"session_Description\",\r\n  \"session_Speaker_Name\": \"session_Speaker_Name\",\r\n  \"session_Start_Time\": \"2026-06-15T09:30:00\",\r\n  \"session_End_Time\": \"2026-06-15T10:30:00\",\r\n  \"session_Room_Name\": \"session_Room_Name\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/session/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "session",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/session/{sessionId}/user",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/session/1/user",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "session",
+                    "1",
+                    "user"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/session/{sessionId}",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:5119/api/session/9",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "session",
+                    "9"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "error",
+          "item": [
+            {
+              "name": "/user/{userId}/schedule - error user has no session register",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5119/api/user/4/schedule",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "user",
+                    "4",
+                    "schedule"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "success",
+          "item": [
+            {
+              "name": "/user/{userId}/schedule",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5119/api/user/1/schedule",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "user",
+                    "1",
+                    "schedule"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "/user",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5119/api/user",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5119",
+                  "path": [
+                    "api",
+                    "user"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
